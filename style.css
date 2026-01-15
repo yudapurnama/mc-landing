@@ -1,11 +1,14 @@
 /* ===== VARIABLES & RESET ===== */
 :root {
-  --primary: #0a192f;
-  --secondary: #112240;
+  --primary: #c48b9f;
+  /* Dusty Rose / Pastel Pink */
+  --secondary: #e8b4c3;
+  /* Soft Light Pink */
   --accent: #d4af37;
   /* Gold */
-  --accent-light: #f3d778;
-  --text-light: #ccd6f6;
+  --accent-light: #fff0f5;
+  /* Lavender Blush */
+  --text-light: #fff;
   --text-muted: #8892b0;
   --white: #ffffff;
   --transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -27,8 +30,9 @@ html {
 body {
   font-family: var(--font-body);
   line-height: 1.7;
-  color: #444;
-  background-color: #f9f9f9;
+  color: #555;
+  background-color: #fffbfd;
+  /* Very light pink background */
   overflow-x: hidden;
 }
 
@@ -70,8 +74,8 @@ img {
   text-align: center;
 }
 
-.gold-text {
-  color: var(--accent);
+.accent-text {
+  color: var(--secondary);
 }
 
 .bg-light {
@@ -96,14 +100,14 @@ img {
 }
 
 .btn-primary {
-  background: var(--accent);
-  color: var(--primary);
-  border: 2px solid var(--accent);
+  background: var(--primary);
+  color: var(--white);
+  border: 2px solid var(--primary);
 }
 
 .btn-primary:hover {
   background: transparent;
-  color: var(--accent);
+  color: var(--primary);
 }
 
 .btn-outline {
@@ -129,9 +133,10 @@ img {
 }
 
 .navbar.scrolled {
-  background: rgba(10, 25, 47, 0.95);
+  background: rgba(196, 139, 159, 0.95);
+  /* Dusty Rose Transparent */
   padding: 15px 0;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
   backdrop-filter: blur(10px);
 }
 
@@ -144,7 +149,7 @@ img {
 .logo {
   font-size: 1.5rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--white);
   letter-spacing: 2px;
 }
 
@@ -156,14 +161,11 @@ img {
 
 .nav-links a {
   color: var(--white);
-  /* Default white on hero */
   font-size: 0.95rem;
   font-weight: 500;
   position: relative;
 }
 
-/* Navbar links color change on white sections logic handled by mix-blend-mode or simple scrolling class override if needed. 
-   Here we keep it simple: navbar always dark on scroll. Initial state transparent. */
 .nav-links a::after {
   content: '';
   position: absolute;
@@ -171,12 +173,13 @@ img {
   left: 0;
   width: 0;
   height: 2px;
-  background: var(--accent);
+  background: var(--white);
   transition: width 0.3s ease;
 }
 
 .nav-links a:hover {
-  color: var(--accent);
+  color: var(--white);
+  opacity: 0.8;
 }
 
 .nav-links a:hover::after {
@@ -184,10 +187,10 @@ img {
 }
 
 .nav-btn {
-  border: 1px solid var(--accent);
+  border: 1px solid var(--white);
   padding: 8px 20px;
   border-radius: 4px;
-  color: var(--accent) !important;
+  color: var(--white) !important;
 }
 
 .nav-btn:hover::after {
@@ -195,7 +198,7 @@ img {
 }
 
 .nav-btn:hover {
-  background: var(--accent);
+  background: var(--white);
   color: var(--primary) !important;
 }
 
@@ -209,9 +212,7 @@ img {
 /* ===== HERO ===== */
 .hero {
   height: 100vh;
-  background: url('assets/mc.jpg') no-repeat center center/cover;
-  /* Fallback image if exact asset not avail, assume user has one or replaces it */
-  /* Use a gradient overlay since we don't know the exact image brightness */
+  background: url('assets/IMG_5556.jpeg') no-repeat center center/cover;
   position: relative;
   display: flex;
   align-items: center;
@@ -220,14 +221,14 @@ img {
   color: var(--white);
 }
 
-/* Ensure overlay is dark enough */
 .hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(rgba(10, 25, 47, 0.8), rgba(10, 25, 47, 0.6));
+  /* Softer Pastel Gradient */
+  background: linear-gradient(rgba(196, 139, 159, 0.8), rgba(120, 80, 95, 0.6));
   z-index: 1;
 }
 
@@ -241,11 +242,13 @@ img {
   font-size: 3.5rem;
   margin-bottom: 20px;
   line-height: 1.2;
+  color: #ffe0e9;
+  /* Pastel Pink / Lavender Blush to stand out on dark overlay */
 }
 
 .hero-subtitle {
   font-size: 1.1rem;
-  color: var(--text-light);
+  color: #f0f0f0;
   margin-bottom: 40px;
   max-width: 600px;
   margin-left: auto;
@@ -266,8 +269,7 @@ img {
 
 .about-image img {
   border-radius: 10px;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
-  /* Placeholder behavior if image missing, ensuring layout holds */
+  box-shadow: 0 20px 40px rgba(196, 139, 159, 0.2);
   min-height: 400px;
   object-fit: cover;
   background: #ccc;
@@ -280,17 +282,17 @@ img {
   background: var(--white);
   padding: 20px;
   border-radius: 10px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   display: flex;
   align-items: center;
   gap: 15px;
-  border-left: 5px solid var(--accent);
+  border-left: 5px solid var(--secondary);
 }
 
 .experience-badge .number {
   font-size: 2.5rem;
   font-weight: 700;
-  color: var(--accent);
+  color: var(--secondary);
   font-family: var(--font-heading);
   line-height: 1;
 }
@@ -299,6 +301,7 @@ img {
   font-size: 0.9rem;
   font-weight: 600;
   line-height: 1.2;
+  color: #666;
 }
 
 .about-text {
@@ -317,7 +320,7 @@ img {
   display: block;
   width: 60px;
   height: 3px;
-  background: var(--accent);
+  background: var(--secondary);
   margin-top: 10px;
 }
 
@@ -342,10 +345,11 @@ img {
   align-items: center;
   gap: 10px;
   font-weight: 500;
+  color: #666;
 }
 
 .feature-item i {
-  color: var(--accent);
+  color: var(--secondary);
 }
 
 /* ===== SERVICES ===== */
@@ -360,31 +364,31 @@ img {
   padding: 40px 30px;
   border-radius: 10px;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-  /* Soft shadow */
   transition: var(--transition);
   border-bottom: 3px solid transparent;
 }
 
 .service-card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  border-bottom: 3px solid var(--accent);
+  box-shadow: 0 20px 40px rgba(196, 139, 159, 0.15);
+  border-bottom: 3px solid var(--secondary);
 }
 
 .icon-box {
   font-size: 2.5rem;
-  color: var(--accent);
+  color: var(--primary);
   margin-bottom: 20px;
 }
 
 .service-card h3 {
   margin-bottom: 15px;
   font-size: 1.25rem;
+  color: var(--primary);
 }
 
 .service-card p {
   font-size: 0.95rem;
-  color: var(--text-muted);
+  color: #777;
 }
 
 /* ===== LOCATIONS ===== */
@@ -397,16 +401,16 @@ img {
 }
 
 .tag {
-  background: #eef2f6;
+  background: #fff0f5;
   padding: 10px 20px;
   border-radius: 30px;
   font-weight: 500;
-  color: var(--secondary);
+  color: var(--primary);
   transition: var(--transition);
 }
 
 .tag:hover {
-  background: var(--accent);
+  background: var(--primary);
   color: white;
   transform: scale(1.05);
 }
@@ -420,16 +424,16 @@ img {
 }
 
 .testimoni-card {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(255, 255, 255, 0.1);
   padding: 30px;
   border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
 .quote-icon {
   font-size: 2rem;
-  color: var(--accent);
-  opacity: 0.5;
+  color: var(--white);
+  opacity: 0.8;
   margin-bottom: 20px;
 }
 
@@ -440,14 +444,14 @@ img {
 }
 
 .client-info strong {
-  color: var(--accent);
+  color: var(--white);
   font-family: var(--font-heading);
   letter-spacing: 1px;
 }
 
 .client-info span {
   font-size: 0.85rem;
-  color: var(--text-muted);
+  color: #f0f0f0;
 }
 
 /* ===== CTA BOX ===== */
@@ -459,7 +463,41 @@ img {
   text-align: center;
   position: relative;
   overflow: hidden;
-  background-image: linear-gradient(135deg, #0a192f 0%, #172a45 100%);
+  background-image: linear-gradient(135deg, #c48b9f 0%, #d69db1 100%);
+}
+
+.cta-box h2 {
+  color: white;
+  margin-bottom: 15px;
+}
+
+.cta-box p {
+  margin-bottom: 30px;
+  color: #fff;
+}
+
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 0%, transparent 70%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+.cta-box {
+  background: var(--primary);
+  color: white;
+  padding: 60px;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  /* Pastel Pink Gradient */
+  background-image: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
 }
 
 .cta-box h2 {
@@ -479,7 +517,8 @@ img {
   left: -50%;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(212, 175, 55, 0.1) 0%, transparent 70%);
+  /* Soft pink glow */
+  background: radial-gradient(circle, rgba(255, 107, 154, 0.2) 0%, transparent 70%);
   z-index: 1;
   pointer-events: none;
 }
